@@ -24,9 +24,10 @@ $menu-color: black;
 
     &__itemLink {
         @include header-link;
-        
+
         &:hover {
             border-bottom: 2px solid $menu-color;
+            transition: 0.3s;
         }
 
         &--isActive{
