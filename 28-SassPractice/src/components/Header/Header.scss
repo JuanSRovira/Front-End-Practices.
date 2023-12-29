@@ -1,3 +1,10 @@
+$menu-color: black;
+@mixin header-link {
+    color: $menu-color;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
 .header {
     background-color: rgb(116, 116, 116);
     display: flex;
@@ -6,9 +13,7 @@
     padding: 15px 30px;
 
     &__logo {
-        color: black;
-        text-decoration: none;
-        letter-spacing: 2px;
+       @include header-link;
     }
 
     &__navList {
@@ -18,11 +23,14 @@
     }
 
     &__itemLink {
-        color: black;
-        text-decoration: none;
-        letter-spacing: 2px;
+        @include header-link;
+        
         &:hover {
-            border-bottom: 2px solid #3d3d3d;
+            border-bottom: 2px solid $menu-color;
+        }
+
+        &--isActive{
+            border-bottom: 2px solid $menu-color;
         }
 
     }
