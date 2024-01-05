@@ -1,25 +1,31 @@
-import React from 'react'
+import { NavLink } from 'react-router-dom'
 import './Header.scss'
 
 // Se especifican los elementos por el  "__" (Doble guion bajo)
 // En la etiqueta home ya tiene un -- que lo identifica como modificador
 
 const Header = () => {
+  const linkIsActive = (isActive) => {
+    return isActive ? 'header__itemLink header__itemLink--isActive' : 'header__itemLink'
+  }
   return (
     <nav className='header'>
-      <a href='/' className='header__logo'>LOGO</a>
+      <NavLink to='/' className='header__logo'>LOGO</NavLink>
       <ul className='header__navList'>
         <li className='header__listItem'>
-          <a href='/home' className='header__itemLink header__itemLink--isActive'>Home</a>
+          <NavLink to='/home' className={({ isActive }) => linkIsActive(isActive)}>Home</NavLink>
         </li>
         <li className='header__listItem'>
-          <a href='/dashboard' className='header__itemLink'>Dashboard</a>
+          <NavLink to='/dashboard' className={({ isActive }) => linkIsActive(isActive)}>Dashboard</NavLink>
         </li>
         <li className='header__listItem'>
-          <a href='/secret' className='header__itemLink'>Secret</a>
+          <NavLink to='/secret' className={({ isActive }) => linkIsActive(isActive)}>Secret</NavLink>
         </li>
         <li className='header__listItem'>
-          <a href='/login' className='header__itemLink'>Login</a>
+          <NavLink to='/login' className={({ isActive }) => linkIsActive(isActive)}>Login</NavLink>
+        </li>
+        <li className='header__listItem'>
+          <NavLink to='/SignUp' className={({ isActive }) => linkIsActive(isActive)}>SignUp</NavLink>
         </li>
       </ul>
 
