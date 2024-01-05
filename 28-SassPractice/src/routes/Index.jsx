@@ -1,15 +1,16 @@
 import { Routes, Route } from 'react-router-dom'
+import { Home, Dashboard, Login, Secret, Signup } from '@/pages'
+
 import React from 'react'
-import { Dashboard, Home, Login, Secret, SignUp } from '../pages'
 
 const RoutesIndex = () => {
   return (
     <Routes>
-      <Route path='/' element={Home}> </Route>
-      <Route path='/Dashboard' element={Dashboard}> </Route>
-      <Route path='/Login' element={Login} />
-      <Route path='/Secret' element={Secret} />
-      <Route path='/SignUp' element={SignUp} />
+      <Route path='/' element={<Home />} />
+      <Route path='/dashboard' element={<Dashboard />}> </Route>
+      <Route path='/login' element={<Login />} />
+      <Route path='/secret' element={<Secret />} />
+      <Route path='/signup' element={<Signup />} />
     </Routes>
   )
 }
