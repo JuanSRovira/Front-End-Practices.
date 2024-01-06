@@ -27,8 +27,8 @@ const Login = () => {
       })
   }
 
-  const handleSubmit = () => {
-    event.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault()
     senData({ email, password })
   }
 
