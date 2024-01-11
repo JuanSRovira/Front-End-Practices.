@@ -1,8 +1,7 @@
 import logo from '@/assets/react.svg'
 import '@/styles/form.css'
 import { useState } from 'react'
-import axios from 'axios'
-import { signUpUserService } from '../services/userservices'
+import { loginUserService } from '../services/userservices'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -10,8 +9,8 @@ const Login = () => {
 
   const senData = async (data) => {
     try {
-      const response = await signUpUserService(data)
-      localStorage.setItem('jwt_token', response.data.token)
+      const { data: token } = await loginUserService(data)
+      localStorage.setItem('jwt_token', token)
     } catch (error) {
       console.error(error)
     }
