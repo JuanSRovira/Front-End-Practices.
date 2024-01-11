@@ -2,29 +2,19 @@ import logo from '@/assets/react.svg'
 import '@/styles/form.css'
 import { useState } from 'react'
 import axios from 'axios'
+import { signUpUserService } from '../services/userservices'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const senData = async (data) => {
-    const config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'https://ecomerceproject.onrender.com/login',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: JSON.stringify(data)
+    try {
+      const response = await signUpUserService(data)
+      localStorage.setItem('jwt_token', response.data.token)
+    } catch (error) {
+      console.error(error)
     }
-
-    axios.request(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data))
-      })
-      .catch((error) => {
-        console.log(error)
-      })
   }
 
   const handleSubmit = (e) => {

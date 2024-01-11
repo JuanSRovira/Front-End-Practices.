@@ -2,27 +2,18 @@ import React from 'react'
 import logo from '../assets/react.svg'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
+import { registerUserService } from '../services/userservices'
 
 const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   const sendData = async (data) => {
-    const config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'https://ecomerceproject.onrender.com/register',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: JSON.stringify(data)
+    try {
+      const response = await registerUserService(data)
+      console.log(response)
+    } catch (error) {
+      console.error(error)
     }
-    axios.request(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data))
-      })
-      .catch((error) => {
-        console.log(error)
-      })
   }
 
   return (
