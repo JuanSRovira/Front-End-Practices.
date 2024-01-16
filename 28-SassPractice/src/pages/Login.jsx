@@ -1,16 +1,21 @@
 import logo from '@/assets/react.svg'
 import '@/styles/form.css'
 import { useState } from 'react'
-import { loginUserService } from '../services/userservices'
+import { loginUserService } from '@/services/userservices'
+import { useAdmincontext } from '@/Hooks/UseAdmin'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const { login } = useAdmincontext()
 
   const senData = async (data) => {
     try {
-      const { data: token } = await loginUserService(data)
+      const response = await loginUserService(data)
+      const token = response.data.token
       localStorage.setItem('jwt_token', token)
+      console.log(token)
+      login(token)
     } catch (error) {
       console.error(error)
     }

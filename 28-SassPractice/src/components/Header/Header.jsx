@@ -1,10 +1,12 @@
 import { NavLink } from 'react-router-dom'
 import './Header.scss'
+import { useAdmincontext } from '../../Hooks/UseAdmin'
 
 // Se especifican los elementos por el  "__" (Doble guion bajo)
 // En la etiqueta home ya tiene un -- que lo identifica como modificador
 
 const Header = () => {
+  const { logOut } = useAdmincontext()
   const linkIsActive = (isActive) => {
     return isActive ? 'header__itemLink header__itemLink--isActive' : 'header__itemLink'
   }
@@ -26,6 +28,9 @@ const Header = () => {
         </li>
         <li className='header__listItem'>
           <NavLink to='/SignUp' className={({ isActive }) => linkIsActive(isActive)}>SignUp</NavLink>
+        </li>
+        <li className='header__listItem'>
+          <NavLink to='/' onClick={logOut}>Log Out</NavLink>
         </li>
       </ul>
 
