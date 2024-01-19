@@ -7,7 +7,8 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
     'standard',
-    'standard-jsx'
+    'standard-jsx',
+    'plugin:cypress/recomended'
   ],
   ignorePatterns: ['dist'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },

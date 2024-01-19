@@ -3,19 +3,23 @@ import '@/styles/form.css'
 import { useState } from 'react'
 import { loginUserService } from '@/services/userservices'
 import { useAdmincontext } from '@/Hooks/UseAdmin'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { login } = useAdmincontext()
+  const navigate = useNavigate()
 
-  const senData = async (data) => {
+  const sendData = async (data) => {
     try {
       const response = await loginUserService(data)
       const token = response.data.token
       localStorage.setItem('jwt_token', token)
       console.log(token)
       login(token)
+      const admin = login(token)
+      navigate(admin ? '/secret' : '/')
     } catch (error) {
       console.error(error)
     }
@@ -23,7 +27,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    senData({ email, password })
+    sendData({ email, password })
   }
 
   return (
