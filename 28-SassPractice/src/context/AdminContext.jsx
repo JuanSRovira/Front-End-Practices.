@@ -12,7 +12,9 @@ const AdminProvider = ({ children }) => {
 
   const login = (token) => {
     const decoded = jwtDecode(token)
-    setIsAdmin(decoded.role === 'ADMIN')
+    const admin = decoded.role === "ADMIN"
+    setIsAdmin(admin)
+    return admin
   }
 
   const logOut = () => {

@@ -5,7 +5,7 @@ export const useAdmincontext = () => {
   const context = useContext(AdminContext)
 
   if (context === undefined) {
-    throw new Error('use Admin context debe estar dentro del Admin Provider')
+    throw new Error('useAdmincontext debe estar dentro del Admin Provider')
   }
 
   return context

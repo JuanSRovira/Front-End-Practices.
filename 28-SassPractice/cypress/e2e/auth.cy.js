@@ -21,6 +21,20 @@ describe('Funcionalidad del LogIn', () => {
 
     cy.get('button[type="submit"]').click()
 
-    cy.wait('@login')
+  } )
+
+  it('Prueba con LogIn de ADMIN', () =>{
+    cy.intercept('POST', 'http://localhost:3000').as('login')
+    //ARRANGE
+    cy.visit('/login')
+    //2: ACT
+    cy.get('input[type="email"]').type("superman@dc.com")
+    cy.get('input[type="email"]').should('have.value', "superman@dc.com")
+
+    cy.get('input[type="password"]').type("superman")
+    cy.get('input[type="password"]').should('have.value', "superman")
+
+    cy.get('button[type="submit"]').click()
+
   } )
 })

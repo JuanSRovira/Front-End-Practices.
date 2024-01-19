@@ -17,7 +17,6 @@ const Login = () => {
       const token = response.data.token
       localStorage.setItem('jwt_token', token)
       console.log(token)
-      login(token)
       const admin = login(token)
       navigate(admin ? '/secret' : '/')
     } catch (error) {
