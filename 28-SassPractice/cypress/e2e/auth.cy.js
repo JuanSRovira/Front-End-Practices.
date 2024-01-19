@@ -13,13 +13,8 @@ describe('Funcionalidad del LogIn', () => {
     //ARRANGE
     cy.visit('/login')
     //2: ACT
-    cy.get('input[type="email"]').type("drstrange@marvel.com")
-    cy.get('input[type="email"]').should('have.value', "drstrange@marvel.com")
+    cy.login('drstrange@marvel.com', 'multiverso')
 
-    cy.get('input[type="password"]').type("multiverso")
-    cy.get('input[type="password"]').should('have.value', "multiverso")
-
-    cy.get('button[type="submit"]').click()
 
   } )
 
@@ -28,13 +23,8 @@ describe('Funcionalidad del LogIn', () => {
     //ARRANGE
     cy.visit('/login')
     //2: ACT
-    cy.get('input[type="email"]').type("superman@dc.com")
-    cy.get('input[type="email"]').should('have.value', "superman@dc.com")
+    cy.login('superman@dc.com', 'superman')
 
-    cy.get('input[type="password"]').type("superman")
-    cy.get('input[type="password"]').should('have.value', "superman")
-
-    cy.get('button[type="submit"]').click()
 
   } )
 })
